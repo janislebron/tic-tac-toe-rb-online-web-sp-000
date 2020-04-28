@@ -14,3 +14,152 @@ WIN_COMBINATIONS = [
   [0, 4, 8],
   [6, 4, 2]
 ]
+def won?(board)
+  WIN_COMBINATIONS.each {|win_combo|
+    index_0 = win_combo[0]
+    index_1 = win_combo[1]
+    index_2 = win_combo[2]
+
+    position_1 = board[index_0]
+    position_2 = board[index_1]
+    position_3 = board[index_2]
+
+    if position_1 == "X" && position_2 == "X" && position_3 == "X"
+      return win_combo
+    elsif position_1 == "O" && position_2 == "O" && position_3 == "O"
+      return win_combo
+    end
+  }
+  return false
+end
+
+def full?(board)
+  board.all? {|index| index == "X" || index == "O"}
+end
+
+def draw?(board)
+  if !won?(board) && full?(board)
+    return true
+  else
+    return false
+  end
+end
+
+def over?(board)
+  if won?(board) || full?(board) || draw?(board)
+    return true
+  else
+    return false
+  end
+end
+
+def winner (board)
+  index = []
+  index = won?(board)
+  if index == false
+    return nil
+  else
+    if board[index[0]] == "X"
+      return "X"
+    else
+      return "O"
+    end
+  end
+end
+
+
+
+
+def fizzbuzz(int)
+  if int % 3 == 0 && int % 5 == 0
+    "FizzBuzz"
+  elsif int % 5 == 0
+    "Buzz"
+  elsif int % 3 == 0
+  "Fizz"
+  end
+end
+
+#!/usr/bin/env ruby
+
+require_relative '../lib/move.rb'
+
+
+puts "Welcome to Tic Tac Toe!"
+
+board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+
+puts "Where would you like to go?"
+
+input = gets.strip
+index = input_to_index(input)
+
+move(board, index)
+display_board(board)
+
+
+
+
+def display_board(board)
+  puts " #{board[0]} | #{board[1]} | #{board[2]} "
+  puts "-----------"
+  puts " #{board[3]} | #{board[4]} | #{board[5]} "
+  puts "-----------"
+  puts " #{board[6]} | #{board[7]} | #{board[8]} "
+end
+
+
+
+
+def display_board(board)
+  puts " #{board[0]} | #{board[1]} | #{board[2]} "
+  puts "-----------"
+  puts " #{board[3]} | #{board[4]} | #{board[5]} "
+  puts "-----------"
+  puts " #{board[6]} | #{board[7]} | #{board[8]} "
+end
+
+def input_to_index(input)
+  number = input.to_i
+  return number - 1
+end
+
+def move(board, index, character = "X")
+  board[index] = character
+end
+
+Tic Tac Toe Position:
+def position_taken?(board, index)
+if board[index] == " " || board[index] == "" || board[index] == nil
+  return false
+else
+  return true
+end
+End
+
+Valid tic tac toe move
+def valid_move?(board, index)
+  def position_taken?(array, ind)
+    if array[ind] == " " || array[ind] == "" || array[ind] == nil
+      return false
+    else
+      return true
+    end
+  end
+
+  def on_board?(num)
+    if num.between?(0, 8) == true
+      return true
+    else
+      return false
+    end
+  end
+
+  if (position_taken?(board, index)) == false && (on_board?(index) == true)
+    return true
+  else
+    return false
+  end
+
+
+end
